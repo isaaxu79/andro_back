@@ -25,5 +25,6 @@ Route.post('/login', 'AuthController.login')
 
 Route.group(()=> {
   Route.resource('paciente','PacienteController').apiOnly();
+  Route.get('mispacientes/:id','PacienteController.getByDoctor')
   Route.resource('medicina','MedicinaController').apiOnly();
 }).prefix('api/v1')

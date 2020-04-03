@@ -9,6 +9,9 @@
  */
 
 const Paciente = use('App/Models/Paciente');
+const Database = use('Database')
+
+
 class PacienteController {
   /**
    * Show a list of all pacientes.
@@ -66,6 +69,12 @@ class PacienteController {
     let paciente = await Paciente.find(id)
 
     return response.status(200).json(paciente)
+  }
+
+  async getByDoctor({params, request, response}){
+    let {id} = params
+    let pacientes = await Database.table('pacientes').select('*').where('user_id',id)
+    return pacientes
   }
 
   /**
