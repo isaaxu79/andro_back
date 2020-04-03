@@ -35,6 +35,11 @@ class AuthController {
           return response.json({message: 'You are not registered!'})
         }
       }
+      async getUser({request,response,params}){
+        let { id } = params
+        let doctor = await User.find(id)
+        return response.status(200).json(doctor)
+      }
 
 }
 
